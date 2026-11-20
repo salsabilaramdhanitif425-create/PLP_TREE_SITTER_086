@@ -1,0 +1,41 @@
+==================
+Operator in dengan daftar string
+==================
+status in ["open", "pending"]
+---
+
+(query
+  (in_expression
+    left: (identifier)
+    right: (list
+      (string)
+      (string))))
+
+==================
+Operator contains pada teks
+==================
+title contains "urgent"
+---
+
+(query
+  (contains_expression
+    left: (identifier)
+    right: (string)))
+
+==================
+Gabungan kompleks in, and, not, dan contains
+==================
+status in ["open", "pending"] and not title contains "spam"
+---
+
+(query
+  (and_expression
+    left: (in_expression
+      left: (identifier)
+      right: (list
+        (string)
+        (string)))
+    right: (not_expression
+      operand: (contains_expression
+        left: (identifier)
+        right: (string)))))
