@@ -43,10 +43,9 @@ export default grammar({
       'contains',
       field('right', $.string)
     ),
-    list: $ => seq(
-      '[',
-      optional(seq($._value, repeat(seq(',', $._value)))),
-      ']'
+    list: $ => choice(
+      seq('(', optional(seq($._value, repeat(seq(',', $._value)))), ')'),
+      seq('[', optional(seq($._value, repeat(seq(',', $._value)))), ']')
     ),
     _value: $ => choice($.string, $.number, $.boolean),
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_.]*/,

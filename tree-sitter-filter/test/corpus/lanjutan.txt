@@ -1,5 +1,18 @@
 ==================
-Operator in dengan daftar string
+Operator in dengan kurung biasa
+==================
+status in ("open", "pending")
+---
+
+(query
+  (in_expression
+    left: (identifier)
+    right: (list
+      (string)
+      (string))))
+
+==================
+Operator in dengan daftar string kurung siku
 ==================
 status in ["open", "pending"]
 ---
@@ -14,7 +27,7 @@ status in ["open", "pending"]
 ==================
 Operator contains pada teks
 ==================
-title contains "urgent"
+title contains "invoice"
 ---
 
 (query
@@ -25,7 +38,7 @@ title contains "urgent"
 ==================
 Gabungan kompleks in, and, not, dan contains
 ==================
-status in ["open", "pending"] and not title contains "spam"
+status in ("open", "pending") and not title contains "spam"
 ---
 
 (query
