@@ -1,0 +1,5 @@
+status in ("open", "pending")
+and priority >= 2.5
+and (role = "admin" or role != "guest")
+and not archived = true
+and title contains "invoice"
